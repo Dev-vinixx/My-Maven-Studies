@@ -1,4 +1,4 @@
-package com.estudos;
+package com.estudos.converter;
 
 import static com.estudos.converter.Converter.converter;
 
