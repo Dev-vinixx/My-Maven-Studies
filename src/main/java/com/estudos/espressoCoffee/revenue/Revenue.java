@@ -11,19 +11,6 @@ public class Revenue {
     private boolean teapotHotWater;
     private boolean cupOfCoffe;
     private boolean coffeePercolator;
-
-    public int getCoffeeSpoons() {
-        return coffeeSpoons;
-    }
-
-    public int getPaperStrainers() {
-        return paperStrainers;
-    }
-
-    public int getWaterMl() {
-        return waterMl;
-    }
-
     public Revenue(int coffeeSpoons, int paperStrainers, int waterMl, boolean fire, boolean wearableTeapot, boolean wearableCup) {
         this.coffeeSpoons = coffeeSpoons;
         this.paperStrainers = paperStrainers;
@@ -39,6 +26,7 @@ public class Revenue {
 
             throw new RuntimeException("You need to have a minimum of 1 paper strainer to be able to make this recipe.");
         }
+        System.out.println("The percolator with coffee is ready to use.");
         coffeePercolator = true;
         coffeeSpoons -= 3;
         paperStrainers -= 1;
@@ -48,7 +36,12 @@ public class Revenue {
             throw new RuntimeException("The teapot needs to be in good condition to use.");
         } else if (!wearableTeapot) {
             throw new RuntimeException("The fire needs to be on.");
+        } else if (waterMl < 1500) {
+            throw new RuntimeException("You need to have 1L and 500ml of water.");
         }
+        System.out.println("The hot water is already ready for use.");
+        fire = false;
+        waterMl -= 1500;
         teapotHotWater = true;
     }
     public void MakeCoffee() {
@@ -60,6 +53,7 @@ public class Revenue {
             throw new RuntimeException("The cup needs to be in a good condition to be used.");
         }
         cupOfCoffe = true;
+        System.out.println("Your cup of coffee is ready to drink.");
     }
      public void DrinkCoffee() {
         if (!cupOfCoffe) {
